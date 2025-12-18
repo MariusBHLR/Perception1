@@ -3,7 +3,7 @@ import numpy as np
 
 
 video_path = "C:\\Users\\Marie-Pierre\\prog\\perception\\balle.mp4"
-cap = cv.VideoCapture(0)  # 0 pour utiliser la webcam video_path pour un fichier local
+cap = cv.VideoCapture(0)  # 0 to use webcam / video_path for a local file
 if not cap.isOpened():
     print("error")
     exit()
@@ -18,7 +18,7 @@ while True:
     if not ret:
         print("frame error")
         break
-    # Traitement image
+    # Treatement image
     gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
     img = cv.GaussianBlur(gray, (9, 9), 2)
     #cimg = cv.cvtColor(img, cv.COLOR_GRAY2BGR)
@@ -29,7 +29,7 @@ while True:
 
     if circle is not None:
         circle = np.uint16(np.around(circle))
-        # Affichage cercle/centre
+        # Show circle/center
         x, y, r = circle[0, 0]
         cv.circle(frame, (x, y), r, (0, 255, 0), 3)
         cv.circle(frame, (x, y), 2, (0, 0, 255), 3)
@@ -37,9 +37,10 @@ while True:
     #resultat
     cv.imshow('frame', frame)
     key = cv.waitKey(20) & 0xFF
-    if key == 27: #ESC pour quitter
+    if key == 27: #ESC to leave
         break
  
 
 cap.release()
 cv.destroyAllWindows()
+
